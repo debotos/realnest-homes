@@ -1,5 +1,6 @@
 import React from 'react'
 import Axios from 'axios'
+import jwt_decode from 'jwt-decode'
 import { useSelector, useDispatch } from 'react-redux'
 import { Row, Col, Form, Input, Button } from 'antd'
 import { MailOutlined, LockOutlined, LoginOutlined } from '@ant-design/icons'
@@ -34,10 +35,10 @@ function Login() {
 			console.log(`'${API_METHODS.login}' PostData -> `, values)
 			const res = await Axios.post(API_METHODS.login, values)
 			console.log(`'${API_METHODS.login}' response -> `, res.data)
-			let { token, user } = res.data
+			let { token } = res.data
 			localStorage.setItem(JWT, token)
 			setAuthToken(token)
-			dispatch(setCurrentUser(user))
+			dispatch(setCurrentUser(jwt_decode(token)))
 		} catch (error) {
 			handleError(error, 'Login.tsx')
 		} finally {

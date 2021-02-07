@@ -39,7 +39,26 @@ const handleError = (error: any, filename?: string) => {
 
 	msg = msg ? msg.replace('SequelizeValidationError: ', '').replace('Validation error: ', '') : 'Sorry, unable to process right now.'
 
-	notifyError(msg, 'ERROR')
+	if (typeof msg === 'string') {
+		notifyError(msg, 'ERROR')
+	} else if (Array.isArray(msg)) {
+		const stringArray: string[] = []
+		msg.forEach((x) => {
+			if (typeof x === 'string') {
+				stringArray.push(x)
+			}
+		})
+		notifyError(
+			<div>
+				{stringArray.map((x, i) => (
+					<p>
+						{i + 1}. {x}
+					</p>
+				))}
+			</div>,
+			'ERRORS'
+		)
+	}
 
 	return msg
 }

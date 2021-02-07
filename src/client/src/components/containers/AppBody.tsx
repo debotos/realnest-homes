@@ -1,14 +1,16 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { AnimatedSwitch } from 'react-router-transition'
+import { AnimatedSwitch, spring } from 'react-router-transition'
 
 import getRoutes from '@app/routes'
 import ScrollToTop from '../utility/ScrollToTop'
 import PublicRoute from '../utility/PublicRoute'
 import ProtectedRoute from '../utility/ProtectedRoute'
 
+// wrap the `spring` helper to use a bouncy config
 const mapStyles = (styles: any) => ({ opacity: styles.opacity })
-const routeTransition = { atEnter: { opacity: 0 }, atLeave: { opacity: 0 }, atActive: { opacity: 1 } }
+const bounce = (val: any) => spring(val, { stiffness: 330, damping: 22 })
+const routeTransition = { atEnter: { opacity: 0 }, atLeave: { opacity: bounce(0) }, atActive: { opacity: bounce(1) } }
 
 function AppBody() {
 	const routes = getRoutes()
@@ -21,6 +23,7 @@ function AppBody() {
 					atLeave={routeTransition.atLeave}
 					atActive={routeTransition.atActive}
 					mapStyles={mapStyles}
+					className='app-route-wrapper'
 				>
 					{routes.map((route: any, idx: number) => {
 						if (!route.component) return null

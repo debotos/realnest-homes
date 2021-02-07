@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useLocation } from 'react-router-dom'
 import { Affix, Layout, Menu, Row } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -14,6 +15,7 @@ const menuItems = [home, projects, schedules, masterData]
 
 function SideNavigation() {
 	const dispatch: AppDispatch = useDispatch()
+	const { pathname } = useLocation()
 	const { app_logo, app_name } = useSelector((state: RootState) => state.settings)
 
 	return (
@@ -31,7 +33,7 @@ function SideNavigation() {
 				<Row justify='center' align='middle' style={{ height: 64 }}>
 					<AppLogo src={app_logo || Logo} alt={app_name} width='70' onClick={() => routeHistory.push('/')} />
 				</Row>
-				<Menu theme='light' mode='inline' defaultSelectedKeys={[menuItems[0].to]}>
+				<Menu theme='light' mode='inline' selectedKeys={['/' + pathname.split('/')[1]]}>
 					{menuItems.map((item) => {
 						return (
 							<Menu.Item key={item.to} icon={item.icon} onClick={() => routeHistory.push(item.to)}>

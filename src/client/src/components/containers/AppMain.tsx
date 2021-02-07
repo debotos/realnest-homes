@@ -45,7 +45,7 @@ function AppMain({ children }: any) {
 			if (!jwt) return
 
 			// Decode token and get user info and exp
-			const user: Record<string, any> = jwt_decode(localStorage.jwtToken)
+			const user: Record<string, any> = jwt_decode(jwt)
 			// Check for expired token
 			const currentTime = Date.now() / 1000
 			if (user.exp < currentTime) return

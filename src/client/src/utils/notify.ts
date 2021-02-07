@@ -1,6 +1,6 @@
 import { notification } from 'antd'
 
-export const notifyError = (msg: string, title?: string, duration?: number) => {
+export const notifyError = (msg: any, title?: string, duration?: number) => {
 	notification.error({
 		message: title ? title : 'ACTION FAILED',
 		description: msg,

@@ -12,6 +12,9 @@ const get = (key: RouteName) => links[key].to
 // Code splitting
 const Home = loadable(() => import('../pages/home/Home'), loadableOptions)
 const Login = loadable(() => import('../pages/login/Login'), loadableOptions)
+const Projects = loadable(() => import('../pages/projects/Projects'), loadableOptions)
+const Schedules = loadable(() => import('../pages/schedules/Schedules'), loadableOptions)
+const MasterData = loadable(() => import('../pages/masterData/MasterData'), loadableOptions)
 
 /*
 	protected: true  -> Page can be accessed only when authenticated
@@ -26,6 +29,9 @@ const getRoutes = () => [
 	{ path: get('login'), exact: true, protected: false, component: Login },
 	// Private - Only Authenticate User Can Access
 	{ path: get('home'), exact: true, protected: true, component: Home },
+	{ path: get('projects'), exact: true, protected: true, component: Projects },
+	{ path: get('schedules'), exact: true, protected: true, component: Schedules },
+	{ path: get('masterData'), exact: true, protected: true, component: MasterData },
 ]
 
 export default getRoutes
