@@ -21,6 +21,8 @@ const models = {
 	TradeActivity: sequelize.import('./tradeActivity'),
 	Vendor: sequelize.import('./vendor'),
 	Project: sequelize.import('./project'),
+	ProjectActivitySchedule: sequelize.import('./project/projectActivitySchedule'),
+	Comment: sequelize.import('./project/comment'),
 }
 
 Object.keys(models).forEach((key) => {

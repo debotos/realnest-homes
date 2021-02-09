@@ -92,14 +92,6 @@ const project = (sequelize, DataTypes) => {
 				notEmpty: { args: true, msg: 'Project expenses account is required.' },
 			},
 		},
-		sequence: {
-			/* ["UUID_of_trade1", "UUID_of_trade2"] */
-			type: DataTypes.ARRAY(DataTypes.UUID),
-			allowNull: false,
-			validate: {
-				notEmpty: { args: true, msg: 'List of trade is required.' },
-			},
-		},
 	})
 
 	return Project
