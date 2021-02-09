@@ -12,6 +12,15 @@ if (postgresURL && process.env.NODE_ENV === 'production') {
 
 const models = {
 	User: sequelize.import('./user'),
+	List: sequelize.import('./list'),
+	ListInput: sequelize.import('./list/listInput'),
+	Contractor: sequelize.import('./contractor'),
+	DrawSchedule: sequelize.import('./drawSchedule'),
+	Material: sequelize.import('./material'),
+	Trade: sequelize.import('./trade'),
+	TradeActivity: sequelize.import('./tradeActivity'),
+	Vendor: sequelize.import('./vendor'),
+	Project: sequelize.import('./project'),
 }
 
 Object.keys(models).forEach((key) => {

@@ -1,5 +1,5 @@
-const list = (sequelize, DataTypes) => {
-	const List = sequelize.define('list', {
+const vendor = (sequelize, DataTypes) => {
+	const Vendor = sequelize.define('vendor', {
 		id: {
 			allowNull: false,
 			primaryKey: true,
@@ -15,7 +15,7 @@ const list = (sequelize, DataTypes) => {
 			},
 		},
 		address: {
-			/* [{name: 'Deb', phone: '12345'}, {name: 'John', phone: '12345', road: '123 street'}] */
+			/* [{"Name POC1": "Deb", "Phone POC1": "12345"}, {"Name POC2": "John", "Phone POC2": "12345", "Road POC2": "123 street"}] */
 			type: DataTypes.ARRAY(DataTypes.JSON),
 			allowNull: false,
 			validate: {
@@ -24,7 +24,7 @@ const list = (sequelize, DataTypes) => {
 		},
 	})
 
-	return List
+	return Vendor
 }
 
-module.exports = list
+module.exports = vendor

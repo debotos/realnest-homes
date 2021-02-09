@@ -14,6 +14,14 @@ const list = (sequelize, DataTypes) => {
 				notEmpty: { args: true, msg: 'Name is required.' },
 			},
 		},
+		type: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				len: { args: [2, 150], msg: 'Type length min: 2 and max: 150' },
+				notEmpty: { args: true, msg: 'Type is required.' },
+			},
+		},
 		details: {
 			type: DataTypes.TEXT,
 			allowNull: true,

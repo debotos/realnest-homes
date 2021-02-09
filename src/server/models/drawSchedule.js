@@ -6,11 +6,18 @@ const drawSchedule = (sequelize, DataTypes) => {
 			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV4,
 		},
+		draw_number: {
+			type: DataTypes.INTEGER,
+			unique: { args: true, msg: 'Draw number already exist.' },
+			allowNull: false,
+			validate: {
+				notEmpty: { args: true, msg: 'Draw number is required.' },
+			},
+		},
 	})
 
 	DrawSchedule.associate = (models) => {
-		DrawSchedule.hasOne(models.Trade)
-		DrawSchedule.hasOne(models.TradeActivity)
+		DrawSchedule.belongsTo(models.TradeActivity)
 	}
 
 	return DrawSchedule
