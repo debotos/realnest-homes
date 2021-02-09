@@ -10,8 +10,8 @@ const trade = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				len: { args: [3, 200], msg: 'Name length min: 3 and max: 200' },
-				notEmpty: { args: true, msg: 'Name is required.' },
+				len: { args: [3, 200], msg: 'Trade name length min: 3 and max: 200' },
+				notEmpty: { args: true, msg: 'Trade name is required.' },
 			},
 		},
 		description: {

@@ -23,6 +23,9 @@ const models = {
 	Project: sequelize.import('./project'),
 	ProjectActivitySchedule: sequelize.import('./project/projectActivitySchedule'),
 	Comment: sequelize.import('./project/comment'),
+	ProjectDrawSchedule: sequelize.import('./project/projectDrawSchedule'),
+	ProjectMaterial: sequelize.import('./project/projectMaterial'),
+	ProjectExpense: sequelize.import('./project/projectExpense'),
 }
 
 Object.keys(models).forEach((key) => {
