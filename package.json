@@ -13,9 +13,9 @@
 	"scripts": {
 		"start": "node index.js",
 		"server": "nodemon index.js",
-		"client": "yarn start --prefix src/client",
+		"client": "yarn --cwd src/client run start",
 		"dev": "concurrently \"yarn run server\" \"yarn run client\"",
-		"heroku-postbuild": "YARN_PRODUCTION=true yarn install --prefix src/client && yarn run build --prefix src/client"
+		"heroku-postbuild": "YARN_PRODUCTION=false yarn --cwd src/client install && yarn --cwd src/client run build"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.7"
