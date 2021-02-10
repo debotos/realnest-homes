@@ -11,7 +11,7 @@ const apiV1 = require('./api/v1')
 const app = express()
 
 app.use(cors())
-app.use(helmet())
+app.use(helmet({ contentSecurityPolicy: false }))
 app.use(morgan('tiny'))
 app.use(compression())
 app.use(express.json())
