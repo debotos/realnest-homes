@@ -5,7 +5,7 @@ const { postgresDB, postgresUser, postgresPassword, postgresURL } = require('../
 let sequelize
 
 if (postgresURL && process.env.NODE_ENV === 'production') {
-	sequelize = new Sequelize(postgresURL, { dialect: 'postgres' })
+	sequelize = new Sequelize(postgresURL, { dialect: 'postgres', logging: false })
 } else {
 	sequelize = new Sequelize(postgresDB, postgresUser, postgresPassword, { dialect: 'postgres', logging: false })
 }
