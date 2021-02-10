@@ -13,7 +13,7 @@ router.get('/settings', (req, res) => {
 		app_name: 'Realnest Homes',
 		app_website: 'www.realnesthomes.com',
 		app_url: 'https://www.realnesthomes.com',
-		app_logo: 'https://cdn.imageupload.workers.dev/JPG1RqL0_logo.jpeg',
+		app_logo: 'https://realnest-homes.herokuapp.com/realnest-homes.jpeg',
 	})
 })
 
