@@ -2,11 +2,11 @@ import React from 'react'
 import loadable from '@loadable/component'
 
 import links from './links'
-import { LoadingCenter } from '../components/loading/Loading'
+import { LoadingOverlay } from '../components/loading/Loading'
 
 type RouteName = keyof typeof links
 
-const loadableOptions = { fallback: <LoadingCenter msg='Component loading...' /> }
+const loadableOptions = { fallback: <LoadingOverlay msg='Component loading...' isTransparent={true} /> }
 const get = (key: RouteName) => links[key].to
 
 // Code splitting

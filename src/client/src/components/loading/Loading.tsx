@@ -9,6 +9,7 @@ import Logo from '@assets/logo.jpeg'
 
 type LoadingProps = {
 	msg?: string
+	isTransparent?: boolean
 	msgColor?: string
 	opacity?: number
 	spin?: boolean
@@ -75,16 +76,20 @@ export function LoadingCenter(props: LoadingProps) {
 
 /* props can be -> color, msg, msgColor, opacity */
 export function LoadingOverlay(props: LoadingProps) {
-	const { containerStyle = {} } = props
+	const { isTransparent = false, containerStyle = {} } = props
 	return (
 		<div
 			style={{
 				...fullScreenStyles,
-				backgroundColor: `rgba(0, 0, 0, ${props.opacity ? props.opacity : 0.6})`,
+				backgroundColor: isTransparent ? 'transparent' : `rgba(0, 0, 0, ${props.opacity ? props.opacity : 0.6})`,
 				zIndex: 999999 /* Above everything */,
 			}}
 		>
-			<Loading whiteSVG={true} msgColor='#fff' {...props} containerStyle={{ marginTop: 0, ...containerStyle }} />
+			{isTransparent ? (
+				<Loading {...props} containerStyle={{ marginTop: 0, ...containerStyle }} />
+			) : (
+				<Loading whiteSVG={true} msgColor='#fff' {...props} containerStyle={{ marginTop: 0, ...containerStyle }} />
+			)}
 		</div>
 	)
 }
